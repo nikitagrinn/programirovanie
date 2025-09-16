@@ -22,5 +22,5 @@ my_solution = Solution()
 res = my_solution.two_sum([16, 2, 15, 89], 105)
 print(f"Результат для [16, 2, 15, 89] и 105: {res}")
 
-# Вызов с другими данными
+# Вызов 
 print(f"Результат для {arr} и {i}: {my_solution.two_sum(arr, i)}")
