@@ -1,19 +1,26 @@
-numbers = [4, 8, 15, 16, 23, 42]
-target_sum = 31
+# script_solution.py
 
-class TwoSum:
-    def two_sum(self, nums, target):
-        num_map = {}
-        for index, num in enumerate(nums):
-            complement = target - num
-            if complement in num_map:
-                return (num_map[complement], index)
-            num_map[num] = index
+# Исходные данные для примера
+arr = [2, 7, 11, 15]
+i = 9
 
-my_solver = TwoSum()
+class Solution:
+    """Решает задачу Two Sum методом перебора."""
 
-result1 = my_solver.two_sum([3, 9, 11, 17], 20)
-print(f"Результат для первого вызова: {result1}")
+    def two_sum(self, lst, target):
+        for x in range(len(lst)):
+            temp = lst[x + 1:]
+            if target - lst[x] in temp:
+                return (x, temp.index(target - lst[x]) + x + 1)
 
-result2 = my_solver.two_sum(numbers, target_sum)
-print(f"Результат для второго вызова: {result2}")
+# --- Примеры использования ---
+
+# Создаем экземпляр класса
+my_solution = Solution()
+
+# Вызов с одними данными
+res = my_solution.two_sum([16, 2, 15, 89], 105)
+print(f"Результат для [16, 2, 15, 89] и 105: {res}")
+
+# Вызов с другими данными
+print(f"Результат для {arr} и {i}: {my_solution.two_sum(arr, i)}")
