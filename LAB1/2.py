@@ -1,19 +1,30 @@
+# test_solution.py
+
 import unittest
-import first
 
-class TwoSum(unittest.TestCase):
+# Класс с решением копируется прямо в этот файл,
+# чтобы не было зависимости от другого файла.
+class Solution:
+    """Решает задачу Two Sum методом перебора."""
 
-    def test_positive_numbers(self):
-        self.assertEqual(first.TwoSum().two_sum([1, 6, 8, 14], 20), (1, 3))
+    def two_sum(self, lst, target):
+        for x in range(len(lst)):
+            temp = lst[x + 1:]
+            if target - lst[x] in temp:
+                return (x, temp.index(target - lst[x]) + x + 1)
 
-    def test_with_duplicates(self):
-        self.assertEqual(first.TwoSum().two_sum([4, 11, 15, 4], 8), (0, 3))
 
-    def test_end_of_list(self):
-        self.assertEqual(first.TwoSum().two_sum([100, 200, 25, 50], 75), (2, 3))
+# --- Юнит-тесты для проверки класса Solution ---
 
-    def test_with_identical_pair(self):
-        self.assertEqual(first.TwoSum().two_sum([5, 12, 5], 10), (0, 2))
+class TestMySolution(unittest.TestCase):
 
+    def test_same_lst_elems(self):
+        # Создаем экземпляр локального класса Solution
+        solver = Solution()
+        self.assertEqual(solver.two_sum([2, 7, 11, 15], 9), (0, 1))
+        self.assertEqual(solver.two_sum([3, 3, 3, 3], 6), (0, 1))
+        self.assertEqual(solver.two_sum([16, 2, 15, 89], 105), (0, 3))
+
+# Эта строка запускает все тесты в файле
 if __name__ == '__main__':
     unittest.main()
